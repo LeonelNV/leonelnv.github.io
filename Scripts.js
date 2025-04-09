@@ -42,7 +42,7 @@ function toggleLang() {
       study1: "Tepic institute of Technology – Computer science engineering (2019 - 2024)",
       study2: "Anahuac Mayab University – Diploma in video game development and virtual reality environments with Unity (In progress)",
       expTitle: "💼 Experience",
-      exp1: "Virtuality World | August 2024 to March 2025 – sales, client communication, handling and repair of virtual reality machines and web development, .",
+      exp1: "Virtuality World | August 2024 to March 2025 – sales, client communication, handling and repair of virtual reality machines and web development.",
       skillsTitle: "🚀 Skills",
       projectsTitle: "🎯 Projects",
       softSkillsTitle: "🧠 Soft Skills",
