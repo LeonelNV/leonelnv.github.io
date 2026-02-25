@@ -141,12 +141,12 @@
   }
 
   a {
-    color: white; /* Cambia el color del texto del enlace a blanco */
-    text-decoration: none; /* Opcional: elimina el subrayado del enlace */
+    color: var(--primary);
+    text-decoration: none;
   }
 
   a:hover {
-    text-decoration: underline; /* Opcional: subraya el enlace al pasar el cursor */
+    text-decoration: underline;
   }
 
   @media (max-width: 768px) {
