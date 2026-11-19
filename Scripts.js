@@ -1,90 +1,124 @@
-let currentLang = "es";
+/*
+ * Idioma, tema e impresión.
+ * El HTML contiene la versión en español; aquí solo vive la traducción al inglés.
+ * Para añadir un texto traducible: ponle data-i18n="clave" en el HTML y agrega la clave en `en`.
+ */
 
-function toggleTheme() {
-  document.body.classList.toggle('light');
-}
+const translations = {
+  en: {
+    "meta.title": "Leonel Navarro Valades — Computer Systems Engineer",
+    "meta.description": "Résumé of Leonel Navarro Valades, Computer Systems Engineer. Frontend web development (Vue, Nuxt, React) and Unity development.",
 
-function toggleLang() {
-  currentLang = currentLang === "es" ? "en" : "es";
-  const text = {
-    es: {
-      langBtn: "🌐 English",
-      role: "Ingeniero en Sistemas computacionales",
-      aboutTitle: "🎮 Sobre mí",
-      aboutText: "Soy un ingeniero en sistemas apasionado por la tecnología y comprometido con el aprendizaje constante. Disfruto cada aspecto de mi profesión y siempre busco mejorar mis habilidades. Me destaco tanto en el trabajo en equipo como en proyectos individuales, adaptándome con facilidad a distintos entornos y formas de trabajo. Mi objetivo es formar parte de una empresa innovadora que transforme la manera en que se hacen las cosas.",
-      studiesTitle: "📚 Estudios",
-      study1: "Instituto Tecnologico de Tepic – Ingenieria en sistemas computacionales (2019 - 2024)",
-      study2: "Universidad Anahuac Mayab – Diplomado en desarrollo de videojuegos y entornos de realidad virtual con unity",
-      expTitle: "💼 Experiencia",
-      exp1: "<strong>Virtuality world</strong> | Agosto de 2024 a marzo de 2025<br/>Manipulación y reparación de máquinas de realidad virtual y desarrollo de páginas web.",
-      exp2: "<strong>Zen Interactive Labs</strong> | Junio de 2025 a febrero de 2026<br/>Desarrollo web frontend con Nuxt, Vue, JS, Tailwind, etc. y manejo de bases de datos.",
-      skillsTitle: "🚀 Habilidades",
-      projectsTitle: "🎯 Proyectos",
-      softSkillsTitle: "🧠 Habilidades blandas",
-      proj1: "<strong>Unity play: </strong><a href=\"https://play.unity.com/en/user/794399fb-cd4d-4899-bedb-3f3500e7df5f\" target=\"_blank\">https://play.unity.com/en/user/794399fb-cd4d-4899-bedb-3f3500e7df5f</a>",
-      softSkills: [
-        "Trabajo en equipo",
-        "Comunicación",
-        "Adaptabilidad",
-        "Resolución de problemas",
-        "Creatividad",
-        "Proactividad",
-        "Organización",
-        "Responsabilidad",
-        "Trabajo bajo presión"
-      ]
-    },
-    en: {
-      langBtn: "🌐 Español",
-      role: "Computer Systems Engineer",
-      aboutTitle: "🎮 About Me",
-      aboutText: "I’m a computer systems engineer passionate about technology and committed to continuous learning. I enjoy every aspect of my profession and constantly seek to improve my skills. I excel both in teamwork and individual projects, easily adapting to different environments and ways of working. My goal is to be part of an innovative company that transforms the way things are done.",
-      studiesTitle: "📚 Education",
-      study1: "Tepic institute of Technology – Computer science engineering (2019 - 2024)",
-      study2: "Anahuac Mayab University – Diploma in video game development and virtual reality environments with Unity",
-      expTitle: "💼 Experience",
-      exp1: "<strong>Virtuality World</strong> | August 2024 to March 2025<br/>Manipulation and repair of virtual reality machines and web development.",
-      exp2: "<strong>Zen Interactive Labs</strong> | June 2025 to February 2026<br/>Frontend web development with Nuxt, Vue, JS, Tailwind, etc., and database management.",
-      skillsTitle: "🚀 Skills",
-      projectsTitle: "🎯 Projects",
-      softSkillsTitle: "🧠 Soft Skills",
-      proj1: "<strong>Unity play: </strong><a href=\"https://play.unity.com/en/user/794399fb-cd4d-4899-bedb-3f3500e7df5f\" target=\"_blank\">https://play.unity.com/en/user/794399fb-cd4d-4899-bedb-3f3500e7df5f</a>",
-      softSkills: [
-        "Teamwork",
-        "Communication",
-        "Adaptability",
-        "Problem-solving",
-        "Creativity",
-        "Proactivity",
-        "Organization",
-        "Responsibility",
-        "Work under pressure"
-      ]
-    }
-  };
+    download: "Download PDF",
+    role: "Computer Systems Engineer",
 
-  const langData = text[currentLang];
-  document.querySelector(".toggle-lang").innerText = langData.langBtn;
-  document.getElementById("role").innerText = langData.role;
-  document.getElementById("about-title").innerText = langData.aboutTitle;
-  document.getElementById("about-text").innerText = langData.aboutText;
-  document.getElementById("studies-title").innerText = langData.studiesTitle;
-  document.getElementById("study-1").innerHTML = langData.study1;
-  document.getElementById("study-2").innerHTML = langData.study2;
-  document.getElementById("exp-title").innerText = langData.expTitle;
-  document.getElementById("exp-1").innerHTML = langData.exp1;
-  document.getElementById("exp-2").innerHTML = langData.exp2;
-  document.getElementById("skills-title").innerText = langData.skillsTitle;
-  document.getElementById("projects-title").innerText = langData.projectsTitle;
-  document.getElementById("proj-1").innerHTML = langData.proj1;
-  document.querySelector(".soft-skills h4").innerText = langData.softSkillsTitle;
+    "h.profile": "Professional summary",
+    "h.experience": "Experience",
+    "h.education": "Education",
+    "h.projects": "Projects",
+    "h.skills": "Technical skills",
+    "h.soft": "Strengths",
 
-  // Actualizar soft skills
-  const softSkillsList = document.querySelector(".soft-skills ul");
-  softSkillsList.innerHTML = ""; // Limpiar lista
-  langData.softSkills.forEach(skill => {
-    const li = document.createElement("li");
-    li.innerText = skill;
-    softSkillsList.appendChild(li);
+    summary: "Computer Systems Engineer with experience in web development with Nuxt, Vue and Node.js, and in designing system architectures on AWS, including managing development and production environments. I also have specialized training in video game and virtual reality development with Unity. I focus on building clear, maintainable and well-structured interfaces, and I adapt easily to both team and individual work. I'm looking to contribute to a team building innovative digital products.",
+
+    "exp2.title": "Frontend Developer",
+    "exp2.dates": "Jan 2025 – Feb 2026",
+    "exp2.b1": "Built web interfaces with Nuxt, Vue, JavaScript and Tailwind CSS.",
+    "exp2.b2": "Managed and maintained databases for the team's applications.",
+
+    "exp1.title": "Full-Stack Developer – Advanced Electronic Signature",
+    "exp1.dates": "Mar 2026 – Actuality",
+    "exp1.b1": "Designed, developed, maintained, documented and administered the Advanced Electronic Signature platform for the State of Nayarit, along with its related applications and services.",
+    "exp1.b2": "Designed the systems' architecture on AWS across all components: infrastructure, databases, storage and deployment.",
+    "exp1.b3": "Managed development and production environments and version control, on a stack built on Nuxt, Vue and Node.js, among other technologies.",
+    "exp1.b4": "Trained staff and end users.",
+
+    "edu1.title": "B.S. in Computer Systems Engineering",
+    "edu1.org": "Instituto Tecnológico de Tepic",
+    "edu2.title": "Diploma in Video Game and Virtual Reality Development with Unity",
+    "edu2.org": "Universidad Anáhuac Mayab",
+
+    "proj1.title": "Unity Play portfolio",
+    "proj1.desc": "A collection of games and interactive experiences built with Unity and C#, playable in the browser.",
+
+    "sk.backend": "Backend & data",
+    "sk.cloud": "Cloud (AWS)",
+    "sk.mobile": "Mobile",
+    "sk.games": "Games & VR",
+    "sk.tools": "Tools",
+
+    "soft.1": "Teamwork and communication",
+    "soft.2": "Problem solving",
+    "soft.3": "Adaptability and continuous learning",
+    "soft.4": "Organization and working under pressure",
+  },
+};
+
+const storage = {
+  get(key) {
+    try { return localStorage.getItem(key); } catch (e) { return null; }
+  },
+  set(key, value) {
+    try { localStorage.setItem(key, value); } catch (e) { /* sin almacenamiento */ }
+  },
+};
+
+/* ---------- Idioma ---------- */
+
+const nodes = Array.from(document.querySelectorAll("[data-i18n]"));
+const metaDescription = document.querySelector('meta[name="description"]');
+
+// Guarda el texto original (español) de cada nodo para poder volver a él.
+const original = {
+  "meta.title": document.title,
+  "meta.description": metaDescription.content,
+};
+nodes.forEach((el) => { original[el.dataset.i18n] = el.textContent.trim(); });
+
+function applyLang(lang) {
+  const dict = lang === "en" ? translations.en : original;
+
+  nodes.forEach((el) => {
+    const value = dict[el.dataset.i18n];
+    if (value) el.textContent = value;
   });
+
+  document.documentElement.lang = lang;
+  document.title = dict["meta.title"];
+  metaDescription.content = dict["meta.description"];
+
+  const btn = document.getElementById("lang-toggle");
+  btn.textContent = lang === "en" ? "ES" : "EN";
+  btn.setAttribute("aria-label", lang === "en" ? "Cambiar a español" : "Switch to English");
+  document.getElementById("theme-toggle")
+    .setAttribute("aria-label", lang === "en" ? "Toggle theme" : "Cambiar tema");
+
+  storage.set("lang", lang);
 }
+
+document.getElementById("lang-toggle").addEventListener("click", () => {
+  applyLang(document.documentElement.lang === "en" ? "es" : "en");
+});
+
+const savedLang = storage.get("lang");
+if (savedLang === "en") applyLang("en");
+
+/* ---------- Tema ---------- */
+
+function currentTheme() {
+  const explicit = document.documentElement.getAttribute("data-theme");
+  if (explicit) return explicit;
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}
+
+document.getElementById("theme-toggle").addEventListener("click", () => {
+  const next = currentTheme() === "dark" ? "light" : "dark";
+  document.documentElement.setAttribute("data-theme", next);
+  storage.set("theme", next);
+});
+
+/* ---------- Impresión / PDF ---------- */
+
+document.getElementById("print-btn").addEventListener("click", () => window.print());
+
+document.getElementById("year").textContent = new Date().getFullYear();
