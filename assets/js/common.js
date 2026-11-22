@@ -32,10 +32,7 @@
 
     "status.prod": "In production · Government of Nayarit",
     "status.demo": "Live demo",
-    "status.dev": "In development",
-
-    "footer.linkedinTodo": "LinkedIn — TODO: URL",
-  };
+    "status.dev": "In development",  };
 
   const EN = Object.assign({}, COMMON_EN, window.I18N_EN || {});
 

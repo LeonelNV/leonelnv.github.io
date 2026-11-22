@@ -12,7 +12,6 @@ window.I18N_EN = {
   "hero.lead": "TODO: a one-line description of you and what you do.",
   "hero.ctaProjects": "View projects",
   "hero.ctaCv": "Download résumé",
-  "hero.linkedinTodo": "LinkedIn — TODO: URL",
 
   "h.projects": "Featured projects",
   "h.other": "Other projects",
