@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://leonelnv.github.io/sitemap.xml
