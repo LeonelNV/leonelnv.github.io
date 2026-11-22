@@ -22,7 +22,10 @@
   "use strict";
 
   /* Claves comunes a todas las páginas (toolbar, nav, pie). */
-  const COMMON_EN = {};
+  const COMMON_EN = {
+    "nav.options": "Options",
+    "nav.backPortfolio": "← Portfolio",
+  };
 
   const EN = Object.assign({}, COMMON_EN, window.I18N_EN || {});
 

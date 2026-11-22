@@ -140,6 +140,10 @@ a:hover {
   color: var(--accent);
 }
 
+a.tb-btn:hover {
+  text-decoration: none;
+}
+
 .tb-icon {
   width: 36px;
   padding: 0;

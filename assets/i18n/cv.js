@@ -26,7 +26,7 @@ window.I18N_EN = {
   "exp2.b2": "Managed and maintained databases for the team's applications.",
 
   "exp1.title": "Full-Stack Developer – Advanced Electronic Signature",
-  "exp1.dates": "Mar 2026 – Actuality",
+  "exp1.dates": "Mar 2026 – Present",
   "exp1.b1": "Designed, developed, maintained, documented and administered the Advanced Electronic Signature platform for the State of Nayarit, along with its related applications and services.",
   "exp1.b2": "Designed the systems' architecture on AWS across all components: infrastructure, databases, storage and deployment.",
   "exp1.b3": "Managed development and production environments and version control, on a stack built on Nuxt, Vue and Node.js, among other technologies.",
