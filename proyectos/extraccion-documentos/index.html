@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<!-- Caso de estudio creado a partir de /proyectos/_plantilla/. Ver instrucciones ahí. -->
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Extracción de datos de documentos oficiales — Leonel Navarro Valades</title>
+  <meta name="description" content="TODO: descripción del caso de estudio en una o dos frases." />
+  <meta name="author" content="Leonel Navarro Valades" />
+  <link rel="canonical" href="https://leonelnv.github.io/proyectos/extraccion-documentos/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Extracción de datos de documentos oficiales — Leonel Navarro Valades" />
+  <meta property="og:description" content="TODO: descripción del caso de estudio en una o dos frases." />
+  <meta property="og:url" content="https://leonelnv.github.io/proyectos/extraccion-documentos/" />
+  <!-- TODO: cambiar por una imagen del proyecto (1200×630) cuando exista -->
+  <meta property="og:image" content="https://leonelnv.github.io/assets/img/retrato.jpg" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232453a6'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='700' fill='white' text-anchor='middle'%3ELN%3C/text%3E%3C/svg%3E" />
+
+  <!-- Aplica el tema guardado antes de pintar, para evitar parpadeo -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("theme");
+        if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/css/styles.css" />
+  <link rel="stylesheet" href="/assets/css/caso.css" />
+  <script src="/assets/i18n/caso.js" defer></script>
+  <script src="i18n.js" defer></script>
+  <script src="/assets/js/common.js" defer></script>
+</head>
+<body class="has-header">
+
+  <!-- Iconos -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+    <symbol id="i-github" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.1-1.3-.3-2.5-1-3.5.3-1.1.3-2.4 0-3.5 0 0-1 0-3 1.5a10.4 10.4 0 0 0-6 0C8 2 7 2 7 2c-.3 1.1-.3 2.4 0 3.5A5.4 5.4 0 0 0 6 9c0 3.5 3 5.5 6 5.5-.4.5-.7 1-.8 1.6-.2.6-.3 1.2-.2 1.9v4"/><path d="M9 18c-4.5 2-5-2-7-2"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m10 8 6 4-6 4Z"/></symbol>
+    <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+  </svg>
+
+  <header class="site-header">
+    <div class="site-header-inner">
+      <nav class="site-nav" aria-label="Navegación principal" data-i18n-attr="aria-label:nav.main">
+        <ul>
+          <li><a href="/" data-i18n="nav.home">Inicio</a></li>
+          <li><a href="/#proyectos" aria-current="page" data-i18n="nav.projects">Proyectos</a></li>
+          <li><a href="/cv/" data-i18n="nav.cv">CV</a></li>
+          <li><a href="https://github.com/LeonelNV" target="_blank" rel="noopener" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg><span class="nav-label-optional">GitHub</span></a></li>
+        </ul>
+      </nav>
+      <div class="site-tools">
+        <button type="button" class="tb-btn" id="lang-toggle" aria-label="Switch to English">EN</button>
+        <button type="button" class="tb-btn tb-icon" id="theme-toggle" aria-label="Cambiar tema">
+          <svg class="icon icon-moon" aria-hidden="true"><use href="#i-moon"/></svg>
+          <svg class="icon icon-sun" aria-hidden="true"><use href="#i-sun"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page">
+
+    <a class="back-link" href="/#proyectos" data-i18n="cs.back">← Todos los proyectos</a>
+
+    <div class="case-layout">
+
+      <nav class="toc" aria-label="Índice" data-i18n-attr="aria-label:cs.tocAria">
+        <p class="toc-title" data-i18n="cs.toc">Contenido</p>
+        <ol>
+          <li><a href="#resumen" data-i18n="cs.h.summary">Resumen</a></li>
+          <li><a href="#problema" data-i18n="cs.h.problem">Problema y contexto</a></li>
+          <li><a href="#solucion" data-i18n="cs.h.solution">Solución y arquitectura</a></li>
+          <li><a href="#datos" data-i18n="cs.h.data">Datos</a></li>
+          <li><a href="#experimentos" data-i18n="cs.h.experiments">Experimentos</a></li>
+          <li><a href="#resultados" data-i18n="cs.h.results">Resultados</a></li>
+          <li><a href="#despliegue" data-i18n="cs.h.deployment">Despliegue</a></li>
+          <li><a href="#lecciones" data-i18n="cs.h.lessons">Lecciones y siguientes pasos</a></li>
+        </ol>
+      </nav>
+
+      <article class="card case-article">
+
+        <header class="case-header">
+          <!-- Estado: badge--prod (status.prod) · badge--demo (status.demo) · badge--dev (status.dev) -->
+          <span class="badge badge--dev" data-i18n="status.dev">En desarrollo</span>
+          <h1><span data-i18n="pr.title">Extracción de datos de documentos oficiales</span></h1>
+          <p class="case-subtitle"><span data-i18n="pr.subtitle">OCR + LLM vs. modelos de documentos</span></p>
+        </header>
+
+        <!-- 1. Resumen -->
+        <section class="summary-box case-section" id="resumen" aria-labelledby="h-resumen">
+          <h2 id="h-resumen" data-i18n="cs.h.summary">Resumen</h2>
+          <dl class="summary-list">
+            <dt data-i18n="cs.sum.problem">Problema</dt>
+            <dd><span class="todo" data-i18n="pr.sum.problem">TODO: el problema en una o dos líneas.</span></dd>
+
+            <dt data-i18n="cs.sum.role">Rol</dt>
+            <dd><span class="todo" data-i18n="pr.sum.role">TODO: tu rol en el proyecto.</span></dd>
+
+            <dt data-i18n="cs.sum.stack">Stack</dt>
+            <dd>
+              <ul class="tags">
+                <li>OCR</li><li>LLM</li>
+                <li class="todo" data-i18n="pr.sum.stack">TODO: stack</li>
+              </ul>
+            </dd>
+
+            <dt data-i18n="cs.sum.status">Estado</dt>
+            <dd><span class="badge badge--dev" data-i18n="status.dev">En desarrollo</span></dd>
+
+            <dt data-i18n="cs.sum.links">Links</dt>
+            <dd class="summary-links">
+              <!-- TODO: URL del repositorio y de la demo. Los links con href="" se ocultan. -->
+              <a href="" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-code"/></svg><span data-i18n="cs.repo">Repositorio</span></a>
+              <a href="" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg><span data-i18n="cs.demo">Demo</span></a>
+              <span class="summary-links-empty" data-i18n="cs.noLinks">Links próximamente</span>
+            </dd>
+          </dl>
+        </section>
+
+        <!-- 2. Problema y contexto -->
+        <section class="case-section prose" id="problema" aria-labelledby="h-problema">
+          <h2 id="h-problema" data-i18n="cs.h.problem">Problema y contexto</h2>
+          <p><span class="todo" data-i18n="pr.problem.p1">TODO: quién tiene el problema, cómo se resuelve hoy y por qué importa.</span></p>
+        </section>
+
+        <!-- 3. Solución y arquitectura -->
+        <section class="case-section prose" id="solucion" aria-labelledby="h-solucion">
+          <h2 id="h-solucion" data-i18n="cs.h.solution">Solución y arquitectura</h2>
+          <p><span class="todo" data-i18n="pr.solution.p1">TODO: cómo funciona la solución, de principio a fin.</span></p>
+          <figure>
+            <!-- TODO: reemplaza el placeholder por
+                 <img src="/assets/img/proyectos/<slug>/arquitectura.webp" alt="Diagrama de arquitectura" width="1200" height="675" loading="lazy" />
+                 o por un <svg> en línea. -->
+            <div class="figure-placeholder">
+              <svg class="icon" aria-hidden="true"><use href="#i-image"/></svg>
+              <span class="todo" data-i18n="pr.solution.figTodo">TODO: diagrama de arquitectura (imagen o SVG)</span>
+            </div>
+            <figcaption><span class="todo" data-i18n="pr.solution.caption">Figura 1. TODO: descripción del diagrama.</span></figcaption>
+          </figure>
+        </section>
+
+        <!-- 4. Datos -->
+        <section class="case-section prose" id="datos" aria-labelledby="h-datos">
+          <h2 id="h-datos" data-i18n="cs.h.data">Datos</h2>
+          <p class="note" data-i18n="cs.syntheticNote">Este proyecto usa solo datos sintéticos. No se publican documentos reales ni datos personales.</p>
+          <p><span class="todo" data-i18n="pr.data.p1">TODO: cómo se construyó el dataset sintético (plantillas, cantidad, variaciones, etiquetado).</span></p>
+          <pre><code># TODO: fragmento de código relevante (por ejemplo, la generación de datos sintéticos)</code></pre>
+        </section>
+
+        <!-- 5. Experimentos -->
+        <section class="case-section prose" id="experimentos" aria-labelledby="h-experimentos">
+          <h2 id="h-experimentos" data-i18n="cs.h.experiments">Experimentos</h2>
+          <p><span class="todo" data-i18n="pr.exp.p1">TODO: qué modelos o enfoques se compararon y por qué.</span></p>
+          <ul>
+            <li><span class="todo" data-i18n="pr.exp.li1">TODO: enfoque 1 y su motivación.</span></li>
+            <li><span class="todo" data-i18n="pr.exp.li2">TODO: enfoque 2 y su motivación.</span></li>
+          </ul>
+        </section>
+
+        <!-- 6. Resultados -->
+        <section class="case-section prose" id="resultados" aria-labelledby="h-resultados">
+          <h2 id="h-resultados" data-i18n="cs.h.results">Resultados</h2>
+          <p><span class="todo" data-i18n="pr.results.p1">TODO: resumen de resultados y cómo se midieron.</span></p>
+          <div class="table-wrap">
+            <table>
+              <caption><span class="todo" data-i18n="pr.results.caption">Tabla 1. TODO: qué se mide y sobre qué conjunto de prueba.</span></caption>
+              <thead>
+                <tr>
+                  <th scope="col" data-i18n="cs.colModel">Modelo</th>
+                  <th scope="col" class="todo" data-i18n="pr.results.col1">TODO: métrica</th>
+                  <th scope="col" class="todo" data-i18n="pr.results.col2">TODO: métrica</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row"><span data-i18n="pr.results.row1">OCR + LLM</span></th>
+                  <td class="num">—</td>
+                  <td class="num">—</td>
+                </tr>
+                <tr>
+                  <th scope="row"><span data-i18n="pr.results.row2">Modelos de documentos</span> <span class="todo" data-i18n="pr.results.row2Todo">TODO: nombre del modelo</span></th>
+                  <td class="num">—</td>
+                  <td class="num">—</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 data-i18n="cs.h.hits">Ejemplos de aciertos</h3>
+          <div class="figure-grid">
+            <figure>
+              <div class="figure-placeholder">
+                <svg class="icon" aria-hidden="true"><use href="#i-image"/></svg>
+                <span class="todo" data-i18n="pr.results.hitTodo">TODO: ejemplo de acierto (dato sintético)</span>
+              </div>
+            </figure>
+            <figure>
+              <div class="figure-placeholder">
+                <svg class="icon" aria-hidden="true"><use href="#i-image"/></svg>
+                <span class="todo" data-i18n="pr.results.hitTodo">TODO: ejemplo de acierto (dato sintético)</span>
+              </div>
+            </figure>
+          </div>
+
+          <h3 data-i18n="cs.h.misses">Ejemplos de errores</h3>
+          <div class="figure-grid">
+            <figure>
+              <div class="figure-placeholder">
+                <svg class="icon" aria-hidden="true"><use href="#i-image"/></svg>
+                <span class="todo" data-i18n="pr.results.missTodo">TODO: ejemplo de error y por qué ocurre</span>
+              </div>
+            </figure>
+            <figure>
+              <div class="figure-placeholder">
+                <svg class="icon" aria-hidden="true"><use href="#i-image"/></svg>
+                <span class="todo" data-i18n="pr.results.missTodo">TODO: ejemplo de error y por qué ocurre</span>
+              </div>
+            </figure>
+          </div>
+        </section>
+
+        <!-- 7. Despliegue -->
+        <section class="case-section prose" id="despliegue" aria-labelledby="h-despliegue">
+          <h2 id="h-despliegue" data-i18n="cs.h.deployment">Despliegue</h2>
+          <div class="compare">
+            <div>
+              <h3 data-i18n="cs.h.prod">En producción</h3>
+              <p><span class="todo" data-i18n="pr.deploy.prod">TODO: cómo corre en producción (infraestructura, volumen, restricciones).</span></p>
+            </div>
+            <div>
+              <h3 data-i18n="cs.h.public">Versión pública</h3>
+              <p><span class="todo" data-i18n="pr.deploy.public">TODO: qué se publica y en qué se diferencia de producción.</span></p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 8. Lecciones y siguientes pasos -->
+        <section class="case-section prose" id="lecciones" aria-labelledby="h-lecciones">
+          <h2 id="h-lecciones" data-i18n="cs.h.lessons">Lecciones y siguientes pasos</h2>
+          <h3 data-i18n="cs.h.lessonsSub">Lecciones</h3>
+          <ul>
+            <li><span class="todo" data-i18n="pr.lessons.li1">TODO: lección aprendida.</span></li>
+          </ul>
+          <h3 data-i18n="cs.h.next">Siguientes pasos</h3>
+          <ul>
+            <li><span class="todo" data-i18n="pr.next.li1">TODO: siguiente paso.</span></li>
+          </ul>
+        </section>
+
+      </article>
+    </div>
+  </main>
+
+  <footer class="page-footer site-footer">
+    <span>© <span id="year">2026</span> Leonel Navarro Valades</span>
+    <div class="footer-links">
+      <a href="mailto:leonelnavarro72@gmail.com"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>leonelnavarro72@gmail.com</a>
+      <a href="https://github.com/LeonelNV" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>GitHub</a>
+    </div>
+  </footer>
+
+</body>
+</html>

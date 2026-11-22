@@ -2,13 +2,6 @@
    Página de inicio (/). Se carga después de styles.css.
    ========================================================================== */
 
-.card {
-  background: var(--paper);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-}
-
 /* Hero ---------------------------------------------------------------------- */
 
 .hero {
@@ -217,31 +210,6 @@
 .other-item p {
   margin-top: 4px;
   color: var(--text-2);
-}
-
-/* Pie ----------------------------------------------------------------------- */
-
-.footer-links {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 4px 18px;
-  margin-top: 6px;
-}
-
-.footer-links a {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  color: var(--text-2);
-}
-
-.footer-links a:hover {
-  color: var(--accent);
-}
-
-.home-footer {
-  margin-top: 40px;
 }
 
 /* Responsive ---------------------------------------------------------------- */
