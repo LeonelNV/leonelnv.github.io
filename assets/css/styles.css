@@ -281,3 +281,209 @@ a.tb-btn:hover {
     justify-content: center;
   }
 }
+
+/* ==========================================================================
+   Páginas del portafolio (inicio, casos de estudio, 404)
+   Usan <body class="has-header"> con barra de navegación superior
+   en lugar de la toolbar flotante del CV.
+   ========================================================================== */
+
+:root {
+  --ok: #1a7f4b;
+  --warn: #a15c00;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ok: #5cc58f;
+    --warn: #f0b45a;
+  }
+}
+
+:root[data-theme="dark"] {
+  --ok: #5cc58f;
+  --warn: #f0b45a;
+}
+
+body.has-header {
+  padding: 0 0 32px;
+}
+
+.page {
+  max-width: 960px;
+  margin: 32px auto 0;
+  padding: 0 16px;
+}
+
+body.has-header .page-footer {
+  padding: 0 16px;
+}
+
+/* Barra de navegación ------------------------------------------------------ */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+
+.site-header-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.site-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+}
+
+.site-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  color: var(--text-2);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.site-nav a:hover {
+  background: var(--tag-bg);
+  color: var(--text);
+  text-decoration: none;
+}
+
+.site-nav a[aria-current="page"] {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.site-tools {
+  display: flex;
+  gap: 8px;
+  flex: none;
+}
+
+/* Botones ------------------------------------------------------------------ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--paper);
+  color: var(--text-2);
+  font: 600 14px/1 var(--font);
+  transition: border-color .15s, color .15s, filter .15s;
+}
+
+.btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  filter: brightness(1.08);
+}
+
+:root[data-theme="dark"] .btn-primary,
+:root[data-theme="dark"] .btn-primary:hover {
+  color: #0d1015;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .btn-primary,
+  :root:not([data-theme="light"]) .btn-primary:hover {
+    color: #0d1015;
+  }
+}
+
+/* Insignia de estado --------------------------------------------------------
+   .badge--prod  En producción
+   .badge--demo  Demo en vivo
+   .badge--dev   En desarrollo
+   -------------------------------------------------------------------------- */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: flex-start;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--badge, var(--muted));
+  background: color-mix(in srgb, var(--badge, var(--muted)) 12%, transparent);
+}
+
+.badge::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.badge--prod { --badge: var(--ok); }
+.badge--demo { --badge: var(--accent); }
+.badge--dev  { --badge: var(--warn); }
+
+/* Contenido pendiente -------------------------------------------------------
+   Todo lo marcado con .todo es un hueco que hay que llenar.
+   Busca "TODO:" en el repo para encontrarlos.
+   -------------------------------------------------------------------------- */
+
+.todo {
+  color: var(--warn);
+  background: color-mix(in srgb, var(--warn) 10%, transparent);
+  outline: 1px dashed color-mix(in srgb, var(--warn) 60%, transparent);
+  outline-offset: 1px;
+  border-radius: 4px;
+}
+
+.tags li.todo {
+  color: var(--warn);
+  background: transparent;
+  border-style: dashed;
+  border-color: color-mix(in srgb, var(--warn) 60%, transparent);
+  outline: 0;
+}
+
+@media (max-width: 600px) {
+  .site-header-inner {
+    padding: 8px 12px;
+  }
+
+  .site-nav a {
+    padding: 6px 7px;
+    font-size: 13.5px;
+  }
+
+  .site-nav .nav-label-optional {
+    display: none;
+  }
+}

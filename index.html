@@ -3,12 +3,217 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Provisional: redirige al CV mientras se construye la página de inicio (fase 3). -->
-  <meta http-equiv="refresh" content="0; url=/cv/" />
-  <link rel="canonical" href="https://leonelnv.github.io/cv/" />
-  <title>Leonel Navarro Valades</title>
+  <title>Leonel Navarro Valades — Ingeniero de software · Machine Learning aplicado</title>
+  <meta name="description" content="Portafolio de Leonel Navarro Valades, ingeniero de software. Proyectos de Machine Learning aplicado al sector público: extracción de datos de documentos, RAG y más." />
+  <meta name="author" content="Leonel Navarro Valades" />
+  <link rel="canonical" href="https://leonelnv.github.io/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Leonel Navarro Valades — Ingeniero de software · Machine Learning aplicado" />
+  <meta property="og:description" content="Proyectos de Machine Learning aplicado al sector público: extracción de datos de documentos, RAG y más." />
+  <meta property="og:url" content="https://leonelnv.github.io/" />
+  <meta property="og:image" content="https://leonelnv.github.io/assets/img/retrato.jpg" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232453a6'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='700' fill='white' text-anchor='middle'%3ELN%3C/text%3E%3C/svg%3E" />
+
+  <!-- Aplica el tema guardado antes de pintar, para evitar parpadeo -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("theme");
+        if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/css/styles.css" />
+  <link rel="stylesheet" href="/assets/css/inicio.css" />
+  <script src="/assets/i18n/inicio.js" defer></script>
+  <script src="/assets/js/common.js" defer></script>
 </head>
-<body>
-  <p><a href="/cv/">Ir al CV</a></p>
+<body class="has-header">
+
+  <!-- Iconos -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+    <symbol id="i-github" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.1-1.3-.3-2.5-1-3.5.3-1.1.3-2.4 0-3.5 0 0-1 0-3 1.5a10.4 10.4 0 0 0-6 0C8 2 7 2 7 2c-.3 1.1-.3 2.4 0 3.5A5.4 5.4 0 0 0 6 9c0 3.5 3 5.5 6 5.5-.4.5-.7 1-.8 1.6-.2.6-.3 1.2-.2 1.9v4"/><path d="M9 18c-4.5 2-5-2-7-2"/></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6Z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></symbol>
+    <symbol id="i-external" viewBox="0 0 24 24"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></symbol>
+    <symbol id="i-arrow-down" viewBox="0 0 24 24"><path d="M12 5v14M19 12l-7 7-7-7"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m10 8 6 4-6 4Z"/></symbol>
+    <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+  </svg>
+
+  <header class="site-header">
+    <div class="site-header-inner">
+      <nav class="site-nav" aria-label="Navegación principal" data-i18n-attr="aria-label:nav.main">
+        <ul>
+          <li><a href="/" aria-current="page" data-i18n="nav.home">Inicio</a></li>
+          <li><a href="/#proyectos" data-i18n="nav.projects">Proyectos</a></li>
+          <li><a href="/cv/" data-i18n="nav.cv">CV</a></li>
+          <li><a href="https://github.com/LeonelNV" target="_blank" rel="noopener" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg><span class="nav-label-optional">GitHub</span></a></li>
+        </ul>
+      </nav>
+      <div class="site-tools">
+        <button type="button" class="tb-btn" id="lang-toggle" aria-label="Switch to English">EN</button>
+        <button type="button" class="tb-btn tb-icon" id="theme-toggle" aria-label="Cambiar tema">
+          <svg class="icon icon-moon" aria-hidden="true"><use href="#i-moon"/></svg>
+          <svg class="icon icon-sun" aria-hidden="true"><use href="#i-sun"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page">
+
+    <!-- Hero ---------------------------------------------------------------- -->
+    <section class="card hero" aria-labelledby="hero-name">
+      <img class="hero-photo" src="/assets/img/retrato.jpg" alt="Leonel Navarro Valades" width="128" height="128" />
+      <div>
+        <h1 id="hero-name">Leonel Navarro Valades</h1>
+        <p class="hero-role" data-i18n="hero.role">Ingeniero de software · Machine Learning aplicado al sector público</p>
+        <p class="hero-lead"><span class="todo" data-i18n="hero.lead">TODO: una línea de descripción sobre ti y lo que haces.</span></p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#proyectos">
+            <svg class="icon" aria-hidden="true"><use href="#i-arrow-down"/></svg>
+            <span data-i18n="hero.ctaProjects">Ver proyectos</span>
+          </a>
+          <a class="btn" href="/cv/">
+            <svg class="icon" aria-hidden="true"><use href="#i-file"/></svg>
+            <span data-i18n="hero.ctaCv">Descargar CV</span>
+          </a>
+          <a class="btn" href="https://github.com/LeonelNV" target="_blank" rel="noopener">
+            <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>
+            <span>GitHub</span>
+          </a>
+          <!-- TODO: cuando tengas la URL de LinkedIn, cambia este <span> por
+               <a class="btn" href="https://www.linkedin.com/in/..." target="_blank" rel="noopener"> ... </a>
+               y quita la clase "todo". -->
+          <span class="btn todo">
+            <svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg>
+            <span data-i18n="hero.linkedinTodo">LinkedIn — TODO: URL</span>
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Proyectos destacados ----------------------------------------------- -->
+    <section class="section home-section" id="proyectos" aria-labelledby="h-projects">
+      <h2 id="h-projects" data-i18n="h.projects">Proyectos destacados</h2>
+
+      <!--
+        CÓMO AGREGAR UN PROYECTO
+        1. Copia un bloque <article class="card project-card"> ... </article> completo.
+        2. Cambia el prefijo de las claves data-i18n (p. ej. "p1." -> "p3.") y agrega
+           sus traducciones en /assets/i18n/inicio.js.
+        3. Imagen: guarda la captura o GIF en /assets/img/proyectos/<slug>.webp y
+           reemplaza el <div class="card-media-placeholder"> por:
+           <img src="/assets/img/proyectos/<slug>.webp" alt="Descripción" width="640" height="360" loading="lazy" />
+        4. Estado: usa una de estas insignias (y su clave i18n común):
+           <span class="badge badge--prod" data-i18n="status.prod">En producción · Gobierno de Nayarit</span>
+           <span class="badge badge--demo" data-i18n="status.demo">Demo en vivo</span>
+           <span class="badge badge--dev"  data-i18n="status.dev">En desarrollo</span>
+        5. Links: pon la URL en href. Los links con href="" se ocultan solos.
+      -->
+      <div class="projects-grid">
+
+        <!-- Proyecto 1 -->
+        <article class="card project-card" aria-labelledby="p1-title">
+          <div class="card-media">
+            <div class="card-media-placeholder">
+              <svg class="icon" aria-hidden="true"><use href="#i-image"/></svg>
+              <span class="todo" data-i18n="p.imageTodo">TODO: captura o GIF</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <span class="badge badge--dev" data-i18n="status.dev">En desarrollo</span>
+            <div>
+              <h3 class="card-title" id="p1-title" data-i18n="p1.title">Extracción de datos de documentos oficiales</h3>
+              <p class="card-subtitle" data-i18n="p1.subtitle">OCR + LLM vs. modelos de documentos</p>
+            </div>
+            <p class="card-problem"><span class="todo" data-i18n="p1.problem">TODO: el problema que resuelve, en una línea.</span></p>
+            <p class="card-metric">
+              <span class="card-metric-label" data-i18n="p.metricLabel">Métrica principal</span>
+              <span class="card-metric-value"><span class="todo" data-i18n="p1.metric">TODO: métrica principal</span></span>
+            </p>
+            <ul class="tags" aria-label="Stack">
+              <li>OCR</li><li>LLM</li><li class="todo" data-i18n="p.stackTodo">TODO: stack</li>
+            </ul>
+            <div class="card-links">
+              <!-- TODO: URL del caso de estudio (fase 4), repositorio y demo -->
+              <a href=""><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg><span data-i18n="p.caseStudy">Caso de estudio</span></a>
+              <a href="" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-code"/></svg><span data-i18n="p.repo">Repositorio</span></a>
+              <a href="" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg><span data-i18n="p.demo">Demo</span></a>
+              <span class="card-links-empty" data-i18n="p.noLinks">Links próximamente</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Proyecto 2 -->
+        <article class="card project-card" aria-labelledby="p2-title">
+          <div class="card-media">
+            <div class="card-media-placeholder">
+              <svg class="icon" aria-hidden="true"><use href="#i-image"/></svg>
+              <span class="todo" data-i18n="p.imageTodo">TODO: captura o GIF</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <span class="badge badge--dev" data-i18n="status.dev">En desarrollo</span>
+            <h3 class="card-title" id="p2-title" data-i18n="p2.title">Asistente RAG sobre normatividad de firma electrónica</h3>
+            <p class="card-problem"><span class="todo" data-i18n="p2.problem">TODO: el problema que resuelve, en una línea.</span></p>
+            <p class="card-metric">
+              <span class="card-metric-label" data-i18n="p.metricLabel">Métrica principal</span>
+              <span class="card-metric-value"><span class="todo" data-i18n="p2.metric">TODO: métrica principal</span></span>
+            </p>
+            <ul class="tags" aria-label="Stack">
+              <li>RAG</li><li>LLM</li><li class="todo" data-i18n="p.stackTodo">TODO: stack</li>
+            </ul>
+            <div class="card-links">
+              <!-- TODO: URL del caso de estudio, repositorio y demo -->
+              <a href=""><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg><span data-i18n="p.caseStudy">Caso de estudio</span></a>
+              <a href="" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-code"/></svg><span data-i18n="p.repo">Repositorio</span></a>
+              <a href="" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg><span data-i18n="p.demo">Demo</span></a>
+              <span class="card-links-empty" data-i18n="p.noLinks">Links próximamente</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Otros proyectos ----------------------------------------------------- -->
+    <section class="section home-section" aria-labelledby="h-other">
+      <h2 id="h-other" data-i18n="h.other">Otros proyectos</h2>
+      <div class="card other-list">
+        <article class="other-item">
+          <h3>
+            <a class="ext" href="https://play.unity.com/en/user/794399fb-cd4d-4899-bedb-3f3500e7df5f" target="_blank" rel="noopener">
+              <span data-i18n="other.unity.title">Portafolio en Unity Play</span>
+              <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg>
+            </a>
+          </h3>
+          <p data-i18n="other.unity.desc">Colección de videojuegos y experiencias interactivas desarrollados con Unity y C#, jugables desde el navegador.</p>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="page-footer home-footer">
+    <span>© <span id="year">2026</span> Leonel Navarro Valades</span>
+    <div class="footer-links">
+      <a href="mailto:leonelnavarro72@gmail.com"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>leonelnavarro72@gmail.com</a>
+      <a href="https://github.com/LeonelNV" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>GitHub</a>
+      <!-- TODO: URL de LinkedIn (cambiar el <span> por <a href="...">) -->
+      <span class="todo"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg> <span data-i18n="footer.linkedinTodo">LinkedIn — TODO: URL</span></span>
+    </div>
+  </footer>
+
 </body>
 </html>

@@ -1,0 +1,286 @@
+/* ==========================================================================
+   Página de inicio (/). Se carga después de styles.css.
+   ========================================================================== */
+
+.card {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* Hero ---------------------------------------------------------------------- */
+
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 44px 48px;
+}
+
+.hero-photo {
+  width: 128px;
+  height: 128px;
+  flex: none;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--border);
+}
+
+.hero h1 {
+  font-size: 32px;
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.hero-role {
+  margin-top: 6px;
+  font-size: 16.5px;
+  font-weight: 500;
+  color: var(--accent);
+}
+
+.hero-lead {
+  margin-top: 14px;
+  max-width: 60ch;
+  color: var(--text-2);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 22px;
+}
+
+/* Secciones ----------------------------------------------------------------- */
+
+.home-section {
+  margin-top: 48px;
+  scroll-margin-top: 72px;
+}
+
+/* Tarjetas de proyecto ------------------------------------------------------ */
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px;
+}
+
+@media (min-width: 720px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.card-media {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 16 / 9;
+  border-bottom: 1px solid var(--border);
+  background:
+    radial-gradient(circle at 20% 20%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 60%),
+    linear-gradient(135deg, var(--accent-soft), var(--tag-bg));
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.card-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-media-placeholder {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+}
+
+.card-media-placeholder .icon {
+  width: 28px;
+  height: 28px;
+  stroke-width: 1.5;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+  padding: 20px 24px 22px;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.card-subtitle {
+  margin-top: 2px;
+  font-size: 13.5px;
+  color: var(--muted);
+}
+
+.card-problem {
+  color: var(--text-2);
+}
+
+.card-metric {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--tag-bg) 70%, var(--paper));
+  border: 1px solid var(--border);
+}
+
+.card-metric-label {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.card-metric-value {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* Links de la tarjeta. Un link con href="" se oculta (aún no hay URL). */
+.card-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.card-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.card-links a[href=""] {
+  display: none;
+}
+
+.card-links-empty {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+/* Si hay al menos un link visible, ocultar el texto "sin links". */
+.card-links:has(a:not([href=""])) .card-links-empty {
+  display: none;
+}
+
+/* Otros proyectos ----------------------------------------------------------- */
+
+.other-list {
+  padding: 8px 24px;
+}
+
+.other-item {
+  padding: 16px 0;
+}
+
+.other-item + .other-item {
+  border-top: 1px solid var(--border);
+}
+
+.other-item h3 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.other-item p {
+  margin-top: 4px;
+  color: var(--text-2);
+}
+
+/* Pie ----------------------------------------------------------------------- */
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px 18px;
+  margin-top: 6px;
+}
+
+.footer-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-2);
+}
+
+.footer-links a:hover {
+  color: var(--accent);
+}
+
+.home-footer {
+  margin-top: 40px;
+}
+
+/* Responsive ---------------------------------------------------------------- */
+
+@media (max-width: 600px) {
+  .page {
+    margin-top: 20px;
+  }
+
+  .hero {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 28px 20px;
+  }
+
+  .hero-photo {
+    width: 96px;
+    height: 96px;
+  }
+
+  .hero h1 {
+    font-size: 26px;
+  }
+
+  .hero-actions .btn {
+    flex: 1 1 auto;
+    justify-content: center;
+  }
+
+  .home-section {
+    margin-top: 36px;
+  }
+
+  .card-body {
+    padding: 18px 20px 20px;
+  }
+
+  .other-list {
+    padding: 4px 20px;
+  }
+}

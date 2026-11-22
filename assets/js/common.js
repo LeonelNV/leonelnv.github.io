@@ -24,7 +24,17 @@
   /* Claves comunes a todas las páginas (toolbar, nav, pie). */
   const COMMON_EN = {
     "nav.options": "Options",
+    "nav.main": "Main navigation",
     "nav.backPortfolio": "← Portfolio",
+    "nav.home": "Home",
+    "nav.projects": "Projects",
+    "nav.cv": "Résumé",
+
+    "status.prod": "In production · Government of Nayarit",
+    "status.demo": "Live demo",
+    "status.dev": "In development",
+
+    "footer.linkedinTodo": "LinkedIn — TODO: URL",
   };
 
   const EN = Object.assign({}, COMMON_EN, window.I18N_EN || {});
